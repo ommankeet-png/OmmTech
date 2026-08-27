@@ -1,0 +1,535 @@
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+/* =========================================================
+   Floating particles — same effect as HeroSection, runs
+   behind the whole About page.
+   ========================================================= */
+
+.about__particles {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: #060810;
+}
+
+.about__particle {
+  position: absolute;
+  bottom: -20px;
+  border-radius: 50%;
+  background: #37e8f5;
+  box-shadow: 0 0 8px 2px rgba(55, 232, 245, 0.8);
+  opacity: 0;
+  animation-name: about-floatUp;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.about__particle:nth-child(3n) {
+  background: #b98bf0;
+  box-shadow: 0 0 8px 2px rgba(185, 139, 240, 0.8);
+}
+
+@keyframes about-floatUp {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.85;
+  }
+  50% {
+    transform: translate(var(--drift, 10px), -50vh);
+  }
+  90% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: translate(0, -100vh);
+    opacity: 0;
+  }
+}
+
+/* =========================================================
+   Section 1 — About banner (clear background, no dark overlay)
+   ========================================================= */
+
+.about-hero {
+  position: relative;
+  min-height: 64vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #060810;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #e7e9f0;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.about-hero__inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  text-align: center;
+}
+
+.about-hero__title {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 46px;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: #f5f6fa;
+  margin: 0 0 20px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 0, 0, 0.6);
+}
+
+.about-hero__title--glow {
+  color: #b98bf0;
+  text-shadow: 0 0 18px rgba(185, 139, 240, 0.65),
+    0 0 42px rgba(185, 139, 240, 0.35), 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.about-hero__subtitle {
+  font-size: 15.5px;
+  letter-spacing: 0.04em;
+  color: #f1f2f7;
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
+}
+
+/* =========================================================
+   Shared bits: image frame with corner brackets
+   ========================================================= */
+
+.who-we-are__frame,
+.our-story__frame {
+  position: relative;
+  padding: 12px;
+}
+
+.corner {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-color: #37e8f5;
+  border-style: solid;
+  opacity: 0.9;
+}
+
+.corner--tl {
+  top: 0;
+  left: 0;
+  border-width: 2px 0 0 2px;
+}
+
+.corner--br {
+  bottom: 0;
+  right: 0;
+  border-width: 0 2px 2px 0;
+}
+
+.who-we-are__image,
+.our-story__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+  aspect-ratio: 16 / 11;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  filter: saturate(0.95) contrast(1.02);
+}
+
+/* =========================================================
+   Shared bits: section title / body copy
+   ========================================================= */
+
+.section-title {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 34px;
+  letter-spacing: 0.01em;
+  color: #f5f6fa;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 0 0 26px;
+}
+
+.section-bar {
+  width: 4px;
+  height: 34px;
+  background: #37e8f5;
+  box-shadow: 0 0 10px rgba(55, 232, 245, 0.6);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.section-text {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14.5px;
+  line-height: 1.8;
+  color: #949aad;
+  margin: 0 0 20px;
+  max-width: 520px;
+}
+
+.section-text:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   Section 2 — Who We Are
+   ========================================================= */
+
+.who-we-are {
+  position: relative;
+  background: #060810;
+  padding: 90px 96px;
+}
+
+.who-we-are__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* =========================================================
+   Section 3 — Our Story
+   ========================================================= */
+
+.our-story {
+  position: relative;
+  background: #05060c;
+  padding: 90px 96px 100px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.our-story__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* =========================================================
+   Gold accent — used for sections 4-7 (mirrors the reference
+   screenshots) while keeping the same fonts/dark background
+   as the rest of the page.
+   ========================================================= */
+
+:root {
+  --gold: #4CF3FF;
+  --gold-soft: #4CF3FF;
+}
+
+.gold-glow {
+  color: var(--gold);
+  text-shadow: 0 0 16px rgba(240, 180, 41, 0.4);
+}
+
+/* =========================================================
+   Section 4 — Mission / Vision / Values + Stats
+   ========================================================= */
+
+.mvv {
+  position: relative;
+  background: #060810;
+  padding: 90px 96px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-family: "JetBrains Mono", monospace;
+}
+
+.mvv__grid {
+  max-width: 1440px;
+  margin: 0 auto 48px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.mvv-card {
+  background: #0b0e18;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 28px 26px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.mvv-card:hover {
+  border-color: rgba(240, 180, 41, 0.4);
+  transform: translateY(-4px);
+}
+
+.mvv-card__title {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px;
+}
+
+.mvv-card__icon {
+  font-size: 18px;
+}
+
+.mvv-card__desc {
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: #949aad;
+  margin: 0;
+}
+
+.stats {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.stats-card {
+  background: #0b0e18;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 34px 20px;
+  text-align: center;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.stats-card:hover {
+  border-color: rgba(240, 180, 41, 0.4);
+  transform: translateY(-4px);
+}
+
+.stats-card__value {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  color: var(--gold);
+  text-shadow: 0 0 16px rgba(240, 180, 41, 0.35);
+  margin: 0 0 10px;
+}
+
+.stats-card__label {
+  font-size: 13px;
+  color: #c9cddb;
+  margin: 0;
+}
+
+/* =========================================================
+   Section 5 — Why Choose Us / Section 6 — Our Services
+   (shared feature-card layout)
+   ========================================================= */
+
+.why-choose,
+.services {
+  position: relative;
+  background: #05060c;
+  padding: 90px 96px 100px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-family: "JetBrains Mono", monospace;
+  text-align: center;
+}
+
+.why-choose__title,
+.services__title {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+  font-size: 34px;
+  color: var(--gold);
+  text-shadow: 0 0 16px rgba(240, 180, 41, 0.3);
+  margin: 0 0 56px;
+}
+
+.why-choose__grid,
+.services__grid {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  text-align: left;
+}
+
+.feature-card {
+  background: #0b0e18;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 26px 24px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.feature-card:hover {
+  border-color: rgba(240, 180, 41, 0.4);
+  transform: translateY(-4px);
+}
+
+.feature-card__title {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+  font-size: 16.5px;
+  color: var(--gold-soft);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px;
+}
+
+.feature-card__check {
+  color: #ff9f45;
+  font-weight: 700;
+}
+
+.feature-card__icon {
+  font-size: 16px;
+}
+
+.feature-card__desc {
+  font-size: 13px;
+  line-height: 1.75;
+  color: #949aad;
+  margin: 0;
+}
+
+/* =========================================================
+   Section 7 — CTA
+   ========================================================= */
+
+.about-cta {
+  position: relative;
+  background: #060810;
+  padding: 90px 24px 110px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  justify-content: center;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.about-cta__card {
+  width: 100%;
+  max-width: 900px;
+  background: #0b0e18;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 56px 48px;
+  text-align: center;
+}
+
+.about-cta__title {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+  font-size: 34px;
+  color: var(--gold);
+  text-shadow: 0 0 16px rgba(240, 180, 41, 0.3);
+  margin: 0 0 20px;
+}
+
+.about-cta__desc {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #c9cddb;
+  max-width: 640px;
+  margin: 0 auto 32px;
+}
+
+.btn--gold {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 15px 34px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: var(--gold);
+  color: #1a1200;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.btn--gold:hover {
+  box-shadow: 0 0 24px rgba(240, 180, 41, 0.45);
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+
+@media (max-width: 980px) {
+  .about-hero {
+    min-height: 48vh;
+  }
+
+  .about-hero__title {
+    font-size: 32px;
+  }
+
+  .who-we-are,
+  .our-story,
+  .mvv,
+  .why-choose,
+  .services {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .who-we-are__inner,
+  .our-story__inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .our-story__copy {
+    order: 2;
+  }
+
+  .our-story__frame {
+    order: 1;
+  }
+
+  .section-text {
+    max-width: none;
+  }
+
+  .mvv__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .why-choose__grid,
+  .services__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-cta__card {
+    padding: 40px 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .why-choose__grid,
+  .services__grid {
+    grid-template-columns: 1fr;
+  }
+}

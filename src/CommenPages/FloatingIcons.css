@@ -1,0 +1,66 @@
+.fi-root {
+  position: fixed;
+  right: 22px;
+  bottom: 90px;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fi-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: rgba(10, 15, 24, 0.75);
+  backdrop-filter: blur(6px);
+  color: #e8edf5;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.fi-btn:hover {
+  border-color: #37e6f2;
+  color: #37e6f2;
+  box-shadow: 0 0 12px rgba(55, 230, 242, 0.35);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+  .fi-root {
+    right: 14px;
+    bottom: 76px;
+  }
+  .fi-btn {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Social icons — hidden by default, revealed on arrow-up click */
+.fi-social {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fi-social .fi-btn {
+  opacity: 0;
+  max-height: 0;
+  transform: translateY(-8px) scale(0.6);
+  pointer-events: none;
+  overflow: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.fi-social--open .fi-btn {
+  opacity: 1;
+  max-height: 40px;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}

@@ -1,0 +1,627 @@
+/* ==========================================================================
+   Contact page — dark, grid-backed, monospace/cyan real-estate theme
+   Sections: contact form ("Get in touch" + "Send us a message")
+             find-us map ("Find us" + embedded map + help bar)
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+.contact-page {
+  --bg: #0b0e18;
+  --panel: #0c111f;
+  --panel-border: #1b2333;
+  --field-bg: #141a2a;
+  --field-border: #232c42;
+  --cyan: #37e8f5;
+  --cyan-soft: rgba(55, 232, 245, 0.6);
+  --text-main: #f5f6fa;
+  --text-muted: #949aad;
+  --text-dim: #4a5578;
+  --icon-bg: #101a2c;
+  --social-bg: #1a1032;
+  --social-icon: #b9a8ff;
+
+  background-color: var(--bg);
+  font-family: "JetBrains Mono", "Fira Code", "SFMono-Regular", Consolas,
+    "Liberation Mono", Menlo, monospace;
+}
+
+.contact-page * {
+  box-sizing: border-box;
+}
+
+/* ---------- Shared heading styles (used by both sections) ---------- */
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: "Rajdhani", "JetBrains Mono", sans-serif;
+  font-size: 24px;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0 0 14px 0;
+  text-transform: uppercase;
+}
+
+.contact-form-panel .section-heading {
+  justify-content: flex-start;
+}
+
+.heading-line {
+  height: 1px;
+  width: 28px;
+  background: linear-gradient(90deg, transparent, var(--cyan));
+}
+
+.section-subtext {
+  color: var(--text-muted);
+  font-size: 13.5px;
+  line-height: 1.7;
+  margin: 0 0 28px 0;
+  max-width: 46ch;
+}
+
+/* ==========================================================================
+   SECTION 1 — Contact form ("Get in touch" / "Send us a message")
+   ========================================================================== */
+
+.contact-section {
+  position: relative;
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 42px 42px;
+  color: var(--text-main);
+  padding: 72px 24px;
+}
+
+.contact-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ---------- Left column — contact info cards ---------- */
+
+.info-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  padding: 20px 22px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.info-card:hover {
+  border-color: var(--cyan-soft);
+  transform: translateY(-1px);
+}
+
+.info-icon {
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: var(--icon-bg);
+  border: 1px solid var(--field-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cyan);
+}
+
+.info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 2px;
+}
+
+.info-label {
+  font-family: "Rajdhani", "JetBrains Mono", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-main);
+}
+
+.info-text {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.social-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.social-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--social-bg);
+  color: var(--social-icon);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: 1px solid rgba(185, 168, 255, 0.25);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.social-btn:hover {
+  transform: translateY(-2px);
+  background: #241548;
+}
+
+/* ---------- Right column — message form panel ---------- */
+
+.contact-form-panel {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  padding: 40px 44px 36px;
+}
+
+.contact-form {
+  margin-top: 8px;
+}
+
+.form-row {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.form-field {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--field-bg);
+  border: 1px solid var(--field-border);
+  border-radius: 8px;
+  padding: 13px 16px;
+  color: var(--text-dim);
+  transition: border-color 0.2s ease;
+}
+
+.form-field:focus-within {
+  border-color: var(--cyan-soft);
+}
+
+.form-field svg {
+  flex: 0 0 auto;
+  opacity: 0.75;
+}
+
+.form-field input,
+.form-field select {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 13px;
+  width: 100%;
+}
+
+.form-field input::placeholder {
+  color: var(--text-dim);
+}
+
+.form-field select {
+  appearance: none;
+  color: var(--text-dim);
+  cursor: pointer;
+}
+
+.form-field select:valid,
+.form-field select option {
+  color: var(--text-main);
+  background: var(--field-bg);
+}
+
+.textarea-field {
+  align-items: flex-start;
+  padding-top: 15px;
+}
+
+.textarea-field svg {
+  margin-top: 3px;
+}
+
+.textarea-field textarea {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: vertical;
+  min-height: 110px;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.textarea-field textarea::placeholder {
+  color: var(--text-dim);
+}
+
+.full-width {
+  width: 100%;
+}
+
+.submit-row {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0 40px;
+}
+
+.send-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--cyan);
+  color: #0b0e18;
+  font-family: "Rajdhani", "JetBrains Mono", sans-serif;
+  font-weight: 700;
+  font-size: 15.5px;
+  letter-spacing: 0.03em;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 28px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.send-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(55, 232, 245, 0.25);
+}
+
+.send-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.perks-row {
+  border-top: 1px solid var(--panel-border);
+  padding-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.perk-card {
+  background: var(--field-bg);
+  border: 1px solid var(--field-border);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.perk-icon {
+  color: var(--cyan);
+  margin-bottom: 12px;
+}
+
+.perk-title {
+  font-family: "Rajdhani", "JetBrains Mono", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.perk-text {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   SECTION 2 — Find Us (map + floating card + help bar)
+   ========================================================================== */
+
+.find-us-section {
+  background-color: var(--bg);
+  padding: 8px 24px 0;
+}
+
+.find-us-heading {
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto 10px;
+}
+
+.find-us-subtext {
+  text-align: center;
+  margin: 0 auto 32px;
+  max-width: none;
+}
+
+/* ---------- Map frame ---------- */
+.map-frame {
+  position: relative;
+  max-width: 1440px;
+  margin: 0 auto;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--panel-border);
+  background: var(--panel);
+  height: 460px;
+}
+
+.map-iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  filter: grayscale(0.15) contrast(1.05) brightness(0.92);
+}
+
+/* ---------- Floating location card ---------- */
+.map-card {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  width: 296px;
+  background: rgba(10, 14, 24, 0.92);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+.map-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.map-card-title {
+  font-family: "Rajdhani", "JetBrains Mono", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+.map-card-actions {
+  display: flex;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+.map-icon-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--field-border);
+  background: var(--field-bg);
+  color: var(--cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.15s ease;
+}
+
+.map-icon-btn:hover {
+  border-color: var(--cyan-soft);
+  transform: translateY(-1px);
+}
+
+.map-card-address {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+
+.map-card-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+}
+
+.rating-value {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--social-icon);
+  font-weight: 700;
+}
+
+.rating-value svg {
+  color: var(--social-icon);
+}
+
+.rating-count {
+  color: var(--text-dim);
+}
+
+/* ---------- Bottom help bar ---------- */
+.help-bar {
+  max-width: 1440px;
+  margin: 0 auto;
+  margin-top: 28px;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  padding: 22px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.help-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.help-icon {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--social-bg);
+  color: var(--social-icon);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(185, 168, 255, 0.25);
+}
+
+.help-title {
+  font-family: "Rajdhani", "JetBrains Mono", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.help-subtext {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.help-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.help-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Rajdhani", "JetBrains Mono", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border-radius: 8px;
+  padding: 13px 22px;
+  border: 1px solid var(--field-border);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.help-btn:hover {
+  transform: translateY(-1px);
+}
+
+.help-btn-outline {
+  background: var(--field-bg);
+  color: var(--text-main);
+  border-color: var(--field-border);
+}
+
+.help-btn-outline:hover {
+  border-color: var(--cyan-soft);
+}
+
+.help-btn-solid {
+  background: var(--cyan);
+  color: #0b0e18;
+  border-color: transparent;
+}
+
+.help-btn-solid:hover {
+  box-shadow: 0 8px 24px rgba(55, 232, 245, 0.25);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 980px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form-panel {
+    padding: 32px 24px 28px;
+  }
+
+  .map-frame {
+    height: 420px;
+  }
+
+  .map-card {
+    width: calc(100% - 48px);
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 620px) {
+  .contact-section {
+    padding: 48px 16px;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .perks-row {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form-panel {
+    padding: 26px 18px 24px;
+  }
+
+  .find-us-section {
+    padding: 8px 16px 0;
+  }
+
+  .map-frame {
+    height: 380px;
+  }
+
+  .map-card {
+    position: static;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .help-bar {
+    padding: 20px;
+  }
+
+  .help-bar-right {
+    width: 100%;
+  }
+
+  .help-btn {
+    flex: 1;
+    justify-content: center;
+  }
+}

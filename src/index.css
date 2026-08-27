@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-void-950 text-frost-50 font-sans antialiased;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Recurring "signal grid" backdrop — the site's signature motif */
+.sf-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(76, 243, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(76, 243, 255, 0.07) 1px, transparent 1px);
+  background-size: 46px 46px;
+  animation: sf-pan 40s linear infinite;
+}
+
+.sf-grid-fade {
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 40%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 40%, transparent 85%);
+}
+
+.sf-grid-fade-top {
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent 85%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent 85%);
+}
+
+@keyframes sf-pan {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 46px 92px;
+  }
+}
+
+/* Rotating radar sweep — used as a decorative glow behind hero/CTA sections */
+.sf-radar {
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(76, 243, 255, 0.28) 18deg, transparent 46deg);
+  animation: sf-rotate 9s linear infinite;
+}
+
+@keyframes sf-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Signal flicker — for one emphasized word/phrase per page, not overused */
+.sf-flicker {
+  animation: sf-flicker 6s ease-in-out infinite;
+}
+
+@keyframes sf-flicker {
+  0%,
+  92%,
+  100% {
+    text-shadow: 0 0 18px rgba(76, 243, 255, 0.55), 0 0 2px rgba(156, 107, 255, 0.6);
+    opacity: 1;
+  }
+  93% {
+    text-shadow: none;
+    opacity: 0.6;
+  }
+  94% {
+    text-shadow: 0 0 18px rgba(76, 243, 255, 0.55);
+    opacity: 1;
+  }
+  95% {
+    text-shadow: 2px 0 rgba(156, 107, 255, 0.7), -2px 0 rgba(76, 243, 255, 0.7);
+    opacity: 0.85;
+  }
+  96% {
+    text-shadow: 0 0 18px rgba(76, 243, 255, 0.55), 0 0 2px rgba(156, 107, 255, 0.6);
+    opacity: 1;
+  }
+}
+
+/* Corner brackets — targeting-reticle framing used on cards, tiles, panels */
+.sf-corner {
+  position: relative;
+}
+
+.sf-corner::before,
+.sf-corner::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: #4cf3ff;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.sf-corner::before {
+  top: -1px;
+  left: -1px;
+  border-top: 1.5px solid;
+  border-left: 1.5px solid;
+}
+
+.sf-corner::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 1.5px solid;
+  border-right: 1.5px solid;
+}
+
+@keyframes sf-pulse-dot {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.sf-pulse-dot {
+  animation: sf-pulse-dot 2.4s ease-in-out infinite;
+}
+
+/* Sweeping scanline — used inside the hero slider viewport */
+@keyframes sf-scan {
+  0% {
+    transform: translateY(-6%);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.9;
+  }
+  92% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(106%);
+    opacity: 0;
+  }
+}
+
+.sf-scanline {
+  animation: sf-scan 3.2s linear infinite;
+}
+
+.draw-line {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  animation: draw 2.6s ease forwards 0.3s;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid #4cf3ff;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
